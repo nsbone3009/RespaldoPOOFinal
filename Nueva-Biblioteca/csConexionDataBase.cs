@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Data.SqlClient;
 using System.Data;
 using System.IO;
@@ -16,7 +15,7 @@ namespace Nueva_Biblioteca
     class csConexionDataBase
     {
         //public string cadenaConexion = @"Password=123;Persist Security Info=True;User ID=Jeremy01;Initial Catalog=BIBLIOTECA;Data Source=DESKTOP-2UJUKM2\JEREMY";
-        public string cadenaConexion = @"Password=admin;Persist Security Info=False;User ID=admin;Initial Catalog=BIBLIOTECA;Data Source=NIURLETH";
+        public string cadenaConexion = @"Password=1111;Persist Security Info=False;User ID=Administrador;Initial Catalog=BIBLIOTECA;Data Source=DESKTOP-T767FTN\KHRIZ";
         //public string cadenaConexion = @"Server= DESKTOP-RJ6RQ3J\SQLEXPRESS; DataBase = BIBLIOTECA; Integrated Security = True;";
         public SqlConnection conexion;
         public csConexionDataBase()
@@ -102,29 +101,6 @@ namespace Nueva_Biblioteca
             conexion.Close();
             return numero;
         }
-        //esto es para buscar en los reportes
-        public DataTable BuscarLectores(string nombre)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                string query = "SELECT * FROM LECTOR WHERE Nombres LIKE @Nombre + '%'";
-                using (SqlCommand comando = new SqlCommand(query, conexion))
-                {
-                    comando.Parameters.AddWithValue("@Nombre", nombre);
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(comando))
-                    {
-                        adapter.Fill(dt);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al buscar lectores: " + ex.Message);
-            }
-            return dt;
-        }
-
         public void CerrarConexion()
         {
             conexion.Close();
@@ -144,8 +120,6 @@ namespace Nueva_Biblioteca
             Comando.ExecuteNonQuery(); 
             conexion.Close();
         }
-
-
 
     }
 }
