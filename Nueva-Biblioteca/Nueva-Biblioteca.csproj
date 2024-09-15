@@ -54,6 +54,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +74,7 @@
     <Compile Include="csGestionPrestamos.cs" />
     <Compile Include="csLectores.cs" />
     <Compile Include="csLLenarDataGridView.cs" />
+    <Compile Include="csMensajesDCorreosYMensajitos.cs" />
     <Compile Include="csPrestamos.cs" />
     <Compile Include="csReporte.cs" />
     <Compile Include="csReutilización.cs" />
@@ -88,17 +90,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dtsDatos.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmCambioDeContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCambioDeContraseña.Designer.cs">
+      <DependentUpon>frmCambioDeContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConfiguracionGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmConfiguracionGeneral.Designer.cs">
       <DependentUpon>frmConfiguracionGeneral.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmContenedorPerfil.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmContenedorPerfil.Designer.cs">
-      <DependentUpon>frmContenedorPerfil.cs</DependentUpon>
     </Compile>
     <Compile Include="frmActualizacionDContraseña.cs">
       <SubType>Form</SubType>
@@ -247,11 +249,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="frmCambioDeContraseña.resx">
+      <DependentUpon>frmCambioDeContraseña.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguracionGeneral.resx">
       <DependentUpon>frmConfiguracionGeneral.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmContenedorPerfil.resx">
-      <DependentUpon>frmContenedorPerfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmActualizacionDContraseña.resx">
       <DependentUpon>frmActualizacionDContraseña.cs</DependentUpon>

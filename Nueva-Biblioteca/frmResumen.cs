@@ -14,7 +14,7 @@ namespace Nueva_Biblioteca
     {
         static private frmResumen instancia = null;
 
-        public static frmResumen LlamarFormulario()
+        public static frmResumen Formulario()
         {
             if (instancia == null) { instancia = new frmResumen(); }
             return instancia;
@@ -39,7 +39,14 @@ namespace Nueva_Biblioteca
             lbTotalUsuarios.Text = new csConexionDataBase().Contar("select count(IdUsuario)from USUARIO");
             lbPrestamosRegistrados.Text = new csConexionDataBase().Contar("select count(IdPrestamo) from PRESTAMO");
             lbPrestamosPendientes.Text = new csConexionDataBase().Contar("select count(IdPrestamo) FROM PRESTAMO WHERE EstadoRecibido  is NULL");
+            charGraficoDatos.Series[0].Points.AddXY("Libros", lbTotalLibros.Text);
+            charGraficoDatos.Series[0].Points.AddXY("Autores", lbTotalAutores.Text);
+            charGraficoDatos.Series[0].Points.AddXY("Editoriales", lbTotalEditoriales.Text);
+            charGraficoDatos.Series[0].Points.AddXY("Categorias", lbTotalCategorias.Text);
+            charGraficoDatos.Series[0].Points.AddXY("Lectores", lbTotalLectores.Text);
+            charGraficoDatos.Series[0].Points.AddXY("Prestamos Registrados", lbPrestamosRegistrados.Text);
+            charGraficoDatos.Series[0].Points.AddXY("Prestamos Pendientes", lbPrestamosPendientes.Text);
+            charGraficoDatos.Series[0].Points.AddXY("Usuarios", lbTotalUsuarios.Text);
         }
-
     }
 }

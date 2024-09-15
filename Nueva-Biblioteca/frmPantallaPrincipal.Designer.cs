@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPantallaPrincipal));
             this.panel2 = new System.Windows.Forms.Panel();
             this.ptbxPerfil = new System.Windows.Forms.PictureBox();
-            this.lbUsuario = new System.Windows.Forms.Label();
+            this.lbEmpleado = new System.Windows.Forms.Label();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.ListaFlecha = new System.Windows.Forms.ImageList(this.components);
             this.contenedorBiblioteca = new System.Windows.Forms.ListBox();
@@ -54,6 +54,7 @@
             this.contenedorConfiguracion = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ptbxLogoMenu = new System.Windows.Forms.PictureBox();
+            this.contenedorPerfil = new System.Windows.Forms.ListBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbxPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbxBiblioteca)).BeginInit();
@@ -69,7 +70,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.Controls.Add(this.ptbxPerfil);
-            this.panel2.Controls.Add(this.lbUsuario);
+            this.panel2.Controls.Add(this.lbEmpleado);
             this.panel2.Location = new System.Drawing.Point(180, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1020, 60);
@@ -89,21 +90,21 @@
             this.ptbxPerfil.TabStop = false;
             this.ptbxPerfil.Click += new System.EventHandler(this.ptbxPerfil_Click);
             // 
-            // lbUsuario
+            // lbEmpleado
             // 
-            this.lbUsuario.AutoSize = true;
-            this.lbUsuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUsuario.Location = new System.Drawing.Point(852, 21);
-            this.lbUsuario.Name = "lbUsuario";
-            this.lbUsuario.Size = new System.Drawing.Size(109, 19);
-            this.lbUsuario.TabIndex = 0;
-            this.lbUsuario.Text = "Khriz Coronel";
+            this.lbEmpleado.AutoSize = true;
+            this.lbEmpleado.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmpleado.Location = new System.Drawing.Point(852, 21);
+            this.lbEmpleado.Name = "lbEmpleado";
+            this.lbEmpleado.Size = new System.Drawing.Size(81, 19);
+            this.lbEmpleado.TabIndex = 0;
+            this.lbEmpleado.Text = "XXXXXXXX";
             // 
             // pnlPrincipal
             // 
-            this.pnlPrincipal.Location = new System.Drawing.Point(180, 60);
+            this.pnlPrincipal.Location = new System.Drawing.Point(180, 100);
             this.pnlPrincipal.Name = "pnlPrincipal";
-            this.pnlPrincipal.Size = new System.Drawing.Size(1020, 640);
+            this.pnlPrincipal.Size = new System.Drawing.Size(1020, 600);
             this.pnlPrincipal.TabIndex = 5;
             // 
             // ListaFlecha
@@ -139,7 +140,7 @@
             this.btnResumen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnResumen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnResumen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResumen.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResumen.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResumen.ForeColor = System.Drawing.Color.White;
             this.btnResumen.Location = new System.Drawing.Point(0, 90);
             this.btnResumen.Margin = new System.Windows.Forms.Padding(0);
@@ -158,7 +159,7 @@
             this.btnBiblioteca.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnBiblioteca.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnBiblioteca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBiblioteca.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBiblioteca.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBiblioteca.ForeColor = System.Drawing.Color.White;
             this.btnBiblioteca.Location = new System.Drawing.Point(0, 170);
             this.btnBiblioteca.Margin = new System.Windows.Forms.Padding(0);
@@ -173,7 +174,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift SemiLight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 140);
             this.label1.Name = "label1";
@@ -201,7 +202,7 @@
             this.btnPersona.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnPersona.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPersona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPersona.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPersona.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPersona.ForeColor = System.Drawing.Color.White;
             this.btnPersona.Location = new System.Drawing.Point(0, 222);
             this.btnPersona.Margin = new System.Windows.Forms.Padding(0);
@@ -250,7 +251,7 @@
             this.btnPrestamo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnPrestamo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPrestamo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrestamo.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrestamo.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrestamo.ForeColor = System.Drawing.Color.White;
             this.btnPrestamo.Location = new System.Drawing.Point(0, 274);
             this.btnPrestamo.Margin = new System.Windows.Forms.Padding(0);
@@ -299,7 +300,7 @@
             this.btnReportes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportes.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReportes.ForeColor = System.Drawing.Color.White;
             this.btnReportes.Location = new System.Drawing.Point(0, 331);
             this.btnReportes.Margin = new System.Windows.Forms.Padding(0);
@@ -346,7 +347,7 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Bahnschrift SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(0, 384);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
@@ -422,12 +423,30 @@
             this.ptbxLogoMenu.TabIndex = 0;
             this.ptbxLogoMenu.TabStop = false;
             // 
+            // contenedorPerfil
+            // 
+            this.contenedorPerfil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.contenedorPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.contenedorPerfil.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contenedorPerfil.FormattingEnabled = true;
+            this.contenedorPerfil.ItemHeight = 19;
+            this.contenedorPerfil.Items.AddRange(new object[] {
+            "Cambiar Clave",
+            "Cerrar Sesion"});
+            this.contenedorPerfil.Location = new System.Drawing.Point(1076, 56);
+            this.contenedorPerfil.Name = "contenedorPerfil";
+            this.contenedorPerfil.Size = new System.Drawing.Size(118, 40);
+            this.contenedorPerfil.Sorted = true;
+            this.contenedorPerfil.TabIndex = 19;
+            this.contenedorPerfil.SelectedIndexChanged += new System.EventHandler(this.contenedorPerfil_SelectedIndexChanged);
+            // 
             // frmPantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(1200, 700);
+            this.Controls.Add(this.contenedorPerfil);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlPrincipal);
@@ -456,7 +475,6 @@
         #endregion
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox ptbxPerfil;
-        private System.Windows.Forms.Label lbUsuario;
         private System.Windows.Forms.ImageList ListaFlecha;
         private System.Windows.Forms.ListBox contenedorBiblioteca;
         private System.Windows.Forms.Button btnResumen;
@@ -478,6 +496,8 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Panel pnlPrincipal;
         public System.Windows.Forms.PictureBox ptbxLogoMenu;
+        public System.Windows.Forms.ListBox contenedorPerfil;
+        public System.Windows.Forms.Label lbEmpleado;
     }
 }
 

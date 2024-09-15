@@ -13,13 +13,14 @@ namespace Nueva_Biblioteca
     public partial class frmLogin : Form
     {
         static csConexionDataBase conexion = new csConexionDataBase();
+        public string NombreEmpleado = "";
         static private frmLogin instancia = null;
         public static frmLogin Formulario()
         {
             if (instancia == null) { instancia = new frmLogin(); }
             return instancia;
         }
-    
+
         public frmLogin()
         {
             InitializeComponent();
@@ -27,20 +28,29 @@ namespace Nueva_Biblioteca
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            //csLogin login = new csLogin(txtUsuario.Text, txtContraseña.Text);
-            //string EncriptarClave = login.EncriptarYDesencriptar(txtContraseña.Text);
+            csLogin login = new csLogin(txtUsuario.Text, txtContraseña.Text);
+            string EncriptarClave = login.EncriptarYDesencriptar(txtContraseña.Text);
 
-            //if (login.VerificacionLogin(EncriptarClave))
-            //{
+            if (login.VerificacionLogin(EncriptarClave))
+            {
+                string aux = conexion.Extraer($"Select * from USUARIO where IdUsuario = '{login.IdUsuario}'", "Nombres");
+                NombreEmpleado = aux.Substring(0, aux.IndexOf(' '));
+                aux = conexion.Extraer($"Select * from USUARIO where IdUsuario = '{login.IdUsuario}'", "Apellidos");
+                NombreEmpleado += " " + aux.Substring(0, aux.IndexOf(' '));
+
                 frmPantallaPrincipal frmPrincipal = frmPantallaPrincipal.Formulario();
-                frmResumen frm = frmResumen.LlamarFormulario();
+                frmResumen frm = frmResumen.Formulario();
                 frmPrincipal.pnlPrincipal.Controls.Clear();
                 frm.TopLevel = false;
                 frmPrincipal.pnlPrincipal.Controls.Add(frm);
                 frmPrincipal.Show();
-                frm.Show(); 
+
+                frmPrincipal.lbEmpleado.Text = NombreEmpleado;
+                frmPrincipal.IdEmpleado = login.IdUsuario;
+
+                frm.Show();
                 this.Hide();
-            //}
+            }
         }
 
         private void btnOcultarContraseña_Click(object sender, EventArgs e)
