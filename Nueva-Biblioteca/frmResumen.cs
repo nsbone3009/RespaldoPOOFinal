@@ -31,6 +31,7 @@ namespace Nueva_Biblioteca
         }
         public void Mostrar()
         {
+            charGraficoDatos.Series[0].Points.Clear();
             lbTotalEditoriales.Text = new csConexionDataBase().Contar("Select count(IdEditorial) from EDITORIAL ");
             lbTotalAutores.Text = new csConexionDataBase().Contar("Select count(IdAutor) from AUTOR ");
             lbTotalCategorias.Text = new csConexionDataBase().Contar("Select count(IdGenero) from GENERO");
