@@ -20,12 +20,26 @@ namespace Nueva_Biblioteca
             if (instancia == null) { instancia = new frmLogin(); }
             return instancia;
         }
-
         public frmLogin()
         {
             InitializeComponent();
+            AccesoDefault();
+            Reloj.Start();
         }
+        private void AccesoDefault()
+        {
+            string consulta = "IF EXISTS (SELECT 1 FROM CREDENCIAL WHERE (SELECT COUNT(IdCredencial) FROM CREDENCIAL) > 0) SELECT CAST(1 AS BIT) AS RESULTADO ELSE SELECT CAST(0 AS BIT) AS RESULTADO";
+            if (conexion.Extraer(consulta, "RESULTADO") == "False")
+            {
+                string sentencia1 = "Insert into ROL_USUARIO(IdTipoPersona, Rol, Estado, FechaCreacion) Values('000001', 'Administrador', 1, GETDATE())";
+                string sentencia2 = "Insert into USUARIO(IdUsuario, Nombres, Apellidos, Correo, IdTipoPersona, Estado, FechaCreacion) Values('000001', 'Acceso Default', 'Default Acceso', 'Default@gmail.com', '000001', 1, GETDATE())";
+                string sentencia3 = "Insert into CREDENCIAL(IdCredencial, IdUsuario, Usuario, Contraseña) Values('000001', '000001', 'admin', 'pQ2Zygl/Go8=')";
 
+                conexion.Actualizar(sentencia1);
+                conexion.Actualizar(sentencia2);
+                conexion.Actualizar(sentencia3);
+            }
+        }
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             csLogin login = new csLogin(txtUsuario.Text, txtContraseña.Text);
@@ -33,10 +47,14 @@ namespace Nueva_Biblioteca
 
             if (login.VerificacionLogin(EncriptarClave))
             {
-                string aux = conexion.Extraer($"Select * from USUARIO where IdUsuario = '{login.IdUsuario}'", "Nombres");
-                NombreEmpleado = aux.Substring(0, aux.IndexOf(' '));
-                aux = conexion.Extraer($"Select * from USUARIO where IdUsuario = '{login.IdUsuario}'", "Apellidos");
-                NombreEmpleado += " " + aux.Substring(0, aux.IndexOf(' '));
+                try
+                {
+                    string aux = conexion.Extraer($"Select * from USUARIO where IdUsuario = '{login.IdUsuario}'", "Nombres");
+                    NombreEmpleado = aux.Substring(0, aux.IndexOf(' '));
+                    aux = conexion.Extraer($"Select * from USUARIO where IdUsuario = '{login.IdUsuario}'", "Apellidos");
+                    NombreEmpleado += " " + aux.Substring(0, aux.IndexOf(' '));
+                }
+                catch { }
 
                 frmPantallaPrincipal frmPrincipal = frmPantallaPrincipal.Formulario();
                 frmResumen frm = frmResumen.Formulario();
@@ -52,38 +70,31 @@ namespace Nueva_Biblioteca
                 this.Hide();
             }
         }
-
         private void btnOcultarContraseña_Click(object sender, EventArgs e)
         {
             txtContraseña.UseSystemPasswordChar = false; btnMostrarContraseña.Visible = true; btnOcultarContraseña.Visible = false;
         }
-
         private void btnMostrarContraseña_Click(object sender, EventArgs e)
         {
             txtContraseña.UseSystemPasswordChar = true; btnMostrarContraseña.Visible = false; btnOcultarContraseña.Visible = true;
         }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void lbOlvidoContraseña_Click(object sender, EventArgs e)
         {
             new frmRecuperacionDeContrasña().ShowDialog();
         }
-
-        private void frmLogin_Load(object sender, EventArgs e)
+        private void MostrarLogo()
         {
             string consulta = "Select * from CONFIGURACION where IdConfiguracion = (Select max(IdConfiguracion) from CONFIGURACION)";
             ptbxLogoLogin = conexion.ExtraerImagen(consulta, "Imagen", ptbxLogoLogin);
         }
-
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == (char)Keys.Enter)
@@ -91,13 +102,16 @@ namespace Nueva_Biblioteca
                 txtContraseña.Focus();
             }
         }
-
         private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 btnIniciarSesion.PerformClick();
             }
+        }
+        private void Reloj_Tick(object sender, EventArgs e)
+        {
+            MostrarLogo();
         }
     }
 }
