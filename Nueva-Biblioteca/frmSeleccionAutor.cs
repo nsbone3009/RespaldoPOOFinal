@@ -32,10 +32,8 @@ namespace Nueva_Biblioteca
             if (e.ColumnIndex == dgvAutores.Columns[dgvAutores.ColumnCount - 1].Index && e.RowIndex >= 0)
             {
                 frmAgregarOEditarLibro frm = Owner as frmAgregarOEditarLibro;
-                if (frm.txtAutor.Text != "")
-                    frm.txtAutor.Text += ", " + dgvAutores.Rows[e.RowIndex].Cells[1].Value.ToString();
-                else
-                    frm.txtAutor.Text += dgvAutores.Rows[e.RowIndex].Cells[1].Value.ToString();
+                if (frm.txtAutor.Text != "") { frm.txtAutor.Text += ", " + dgvAutores.Rows[e.RowIndex].Cells[1].Value.ToString(); }
+                else { frm.txtAutor.Text = dgvAutores.Rows[e.RowIndex].Cells[1].Value.ToString(); }  
                 this.Close();
             }
         }
